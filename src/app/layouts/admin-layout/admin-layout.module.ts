@@ -7,8 +7,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClipboardModule} from 'ngx-clipboard';
 import {AddPlaylistComponent} from './pages/add-playlist/add-playlist.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
-import {ShowAudioPlaylistComponent} from './pages/show-audio-playlist/show-audio-playlist.component';
-import {ShowVideoPlaylistComponent} from './pages/show-video-playlist/show-video-playlist.component';
+import {ShowMediaComponent} from './pages/show-media/show-media.component';
+import {ShowPlaylistComponent} from './pages/show-playlist/show-playlist.component';
 import {AdminLayoutRoutes} from './admin-layout.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
@@ -26,8 +26,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AddPlaylistComponent,
     DashboardComponent,
-    ShowAudioPlaylistComponent,
-    ShowVideoPlaylistComponent
+    ShowPlaylistComponent,
+    ShowMediaComponent
   ]
 })
 

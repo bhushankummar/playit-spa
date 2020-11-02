@@ -16,5 +16,4 @@ export class AuthService {
   register(data) {
     return this.http.get(environment.apiUrl + '/api/v1/user/register', data);
   }
-
 }

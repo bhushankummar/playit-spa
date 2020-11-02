@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowAudioPlaylistComponent } from './show-audio-playlist.component';
+import { ShowAudioPlaylistComponent } from './show-playlist.component';
 
 describe('ShowAudioPlaylistComponent', () => {
   let component: ShowAudioPlaylistComponent;

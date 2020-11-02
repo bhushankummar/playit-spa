@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, CanActivate} from '@angular/router';
+import {LocalStorageService} from '../../shared/localStorage.service';
 import {AuthGuard} from '../../shared/auth.guard';
 
 declare interface RouteInfo {
@@ -11,8 +12,8 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   // {path: '/products', title: 'Add medicine', icon: 'ni-circle-08 text-pink', class: ''},
   {path: '/add-playlist', title: 'Add playlist', icon: 'ni-circle-08 text-pink', class: ''},
-  {path: '/show-video-playlist', title: 'Show video playlist', icon: 'ni-circle-08 text-pink', class: ''},
-  {path: '/show-audio-playlist', title: 'Show audio playlist', icon: 'ni-circle-08 text-pink', class: ''}
+  {path: '/show-playlist', title: 'Show playlist', icon: 'ni-circle-08 text-pink', class: ''},
+  {path: '/show-media', title: 'Show media', icon: 'ni-circle-08 text-pink', class: ''}
 ];
 
 @Component({
@@ -25,12 +26,16 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private ls: LocalStorageService) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
+  }
+  logout() {
+    this.ls.delete('token');
+    this.router.navigate(['/login']);
   }
 }
