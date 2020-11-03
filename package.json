@@ -6,7 +6,6 @@
   },
   "scripts": {
     "ng": "ng",
-    "heroku-postbuild": "npm run build:prod",
     "start": "node server.js",
     "start:dev": "ng serve",
     "start:prod" : "node server.js",
