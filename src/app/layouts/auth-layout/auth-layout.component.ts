@@ -13,19 +13,19 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    var html = document.getElementsByTagName("html")[0];
-    html.classList.add("auth-layout");
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("bg-custom");
+    const html = document.getElementsByTagName('html')[0];
+    html.classList.add('auth-layout');
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('bg-custom');
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
 
   }
   ngOnDestroy() {
-    var html = document.getElementsByTagName("html")[0];
-    html.classList.remove("auth-layout");
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.remove("bg-custom");
+    const html = document.getElementsByTagName('html')[0];
+    html.classList.remove('auth-layout');
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('bg-custom');
   }
 }
