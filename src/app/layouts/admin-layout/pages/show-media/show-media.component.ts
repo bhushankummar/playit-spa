@@ -19,13 +19,13 @@ export class ShowMediaComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.data = params;
     });
-    console.log(this.data);
     this.mediaService.showMedia(this.data).subscribe(
       response => {
         this.mediaData = response['data'];
         this.spinner.hide();
       },
       error => {
+        this.spinner.hide();
         console.error(error);
       }
     );

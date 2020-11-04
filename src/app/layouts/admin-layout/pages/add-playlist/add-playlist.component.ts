@@ -20,8 +20,7 @@ export class AddPlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.addPlaylist = this.formBuilder.group({
-      email: ['', Validators.email],
-      playlistUrl: [''],
+      playlistUrl: ['', Validators.required],
       type: [null, Validators.required],
       driveFolderId: ['']
     });
@@ -29,7 +28,6 @@ export class AddPlaylistComponent implements OnInit {
   addPlaylistDetails() {
     this.spinner.show();
     this.data = {
-      // email: this.addPlaylist.controls.email.value,
       type: this.addPlaylist.controls.type.value,
       playlistUrl: this.addPlaylist.controls.playlistUrl.value,
       driveFolderId: this.addPlaylist.controls.driveFolderId.value
@@ -37,12 +35,12 @@ export class AddPlaylistComponent implements OnInit {
     this.playlist.addPlaylist(this.data)
       .subscribe(
         response => {
-          console.log(response);
           this.spinner.hide();
           this.router.navigate(['/show-video-playlist']);
         },
         error => {
-          console.log(error);
+          this.spinner.hide();
+          console.error(error);
         }
       );
   }

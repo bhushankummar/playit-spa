@@ -12,7 +12,6 @@ export class MediaService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer 88/pSU+vG0tQULvN0ShyMSjeBzsyVGRxGhafoPx55Zs=`
     });
-    console.log(data);
     return this.http.post(environment.apiUrl + '/api/v1/media-item', data, {headers: headers});
   }
 }

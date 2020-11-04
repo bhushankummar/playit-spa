@@ -19,10 +19,10 @@ export class ShowPlaylistComponent implements OnInit {
         this.spinner.hide();
       },
       error => {
+        this.spinner.hide();
         console.error(error);
       }
     );
-    console.log(this.playlist);
   }
 
 }
