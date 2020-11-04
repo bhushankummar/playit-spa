@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          window.open(response['url'], '_blank');
         },
         error => {
           console.log(error);
