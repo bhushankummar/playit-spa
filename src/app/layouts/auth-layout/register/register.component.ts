@@ -27,13 +27,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.data)
       .subscribe(
         response => {
-          console.log(response);
           window.open(response['url']);
           this.spinner.show();
         },
         error => {
           this.spinner.show();
-          console.log(error);
+          console.error(error);
         }
       );
   }
