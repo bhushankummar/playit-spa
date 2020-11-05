@@ -15,22 +15,18 @@
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Type</th>
-                <th scope="col">Playlist URL</th>
                 <th scope="col">Created at</th>
-                <th scope="col"></th>
+                <th scope="col">Show Media</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of playlist">
-                <td>{{item.title}}</td>
+                <td class="title"><a href="{{item.url}}" target='_blank'>{{item.title}}</a></td>
                 <td><span>{{item.type === '0'?'Audio':'Video'}}</span></td>
-                <td>
-                  <a href="{{item.url}}" target='_blank'>
-                    <button type="submit" class="btn btn-primary mt-4">Go to playlist</button>
-                  </a>
-                </td>
+               
                 <td>{{item.lastSyncTimeStamp|date:'dd/MM/yyyy'}}</td>
-                <td><button type="submit" [routerLink]="['/show-media',{playlistId: item.urlId}]" class="btn btn-primary mt-4">Get media</button>
+                <td><button type="submit" [routerLink]="['/show-media',{playlistId: item.urlId}]"
+                    class="btn btn-sm btn-secondary mt-4">Go to media</button>
                 </td>
               </tr>
             </tbody>

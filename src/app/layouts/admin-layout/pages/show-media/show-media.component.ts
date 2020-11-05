@@ -22,6 +22,7 @@ export class ShowMediaComponent implements OnInit {
     this.mediaService.showMedia(this.data).subscribe(
       response => {
         this.mediaData = response['data'];
+        console.log(this.mediaData);
         this.spinner.hide();
       },
       error => {

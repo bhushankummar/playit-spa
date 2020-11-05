@@ -14,19 +14,17 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">Title</th>
-                <th scope="col">URL</th>
                 <th scope="col">Playlist Id</th>
+                <th scope="col">Downloaded</th>
+                <th scope="col">Uploaded</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of mediaData">
-                <td id='title'>{{item.title}}</td>
-                <td>
-                  <a href="{{item.url}}" target='_blank'>
-                    <button type="submit" class="btn btn-primary mt-4">Go to playlist</button>
-                  </a>
-                </td>
+                <td id='title'><a href="{{item.url}}" target='_blank'>{{item.title}}</a></td>
                 <td>{{item.playlistId}}</td>
+                <td><span [ngClass]="item.isDownloaded ? 'badge badge-success': 'badge badge-danger'">{{item.isDownloaded}}</span></td>
+                <td><span [ngClass]="item.isUploaded ? 'badge badge-success': 'badge badge-danger'">{{item.isUploaded}}</span></td>
               </tr>
             </tbody>
           </table>

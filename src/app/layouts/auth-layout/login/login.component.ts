@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         response => {
           this.local.set(this.generateToken());
-          this.router.navigateByUrl(response['/dashboard']);
+          this.router.navigateByUrl(response['/show-playlist']);
         },
         error => {
           console.error(error);

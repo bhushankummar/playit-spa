@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3007'
+  apiUrl: 'https://playit-desk.herokuapp.com'
 };
 
 /*
