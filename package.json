@@ -6,12 +6,11 @@
   },
   "scripts": {
     "ng": "ng",
-    "heroku-postbuild": "npm run build:prod",
     "start": "node server.js",
     "start:dev": "ng serve",
     "start:prod": "node server.js",
+    "build": "ng build --prod",
     "build:dev": "ng build",
-    "build:prod": "ng build --prod=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
