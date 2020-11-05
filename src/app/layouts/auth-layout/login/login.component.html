@@ -18,12 +18,16 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary my-4" [disabled]="loginForm.invalid">Sign in</button>
+                <button class="btn btn-icon btn-3 btn-danger my-3" type="submit" [disabled]="loginForm.invalid">
+                  <span class="btn-inner--icon"><i class="fab fa-google"></i></span>
+                  <span class="btn-inner--text">Login with Google</span>
+                </button>
               </div>
             </form>
             <div class="row mt-3">
               <div class="col-12 text-center">
-                <a  routerLinkActive="active" [routerLink]="['/register']" class="text-muted"><small>Not have account ? Sign Up</small></a>
+                <a routerLinkActive="active" [routerLink]="['/register']" class="text-muted"><small>Not have account ?
+                    Sign Up</small></a>
               </div>
             </div>
           </div>

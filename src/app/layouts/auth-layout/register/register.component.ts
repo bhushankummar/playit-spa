@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../shared/services/auth/auth.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import {AuthService} from '../../../shared/services/auth/auth.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   data: any;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder,private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.spinner.show();
     this.data = {
       email: this.registerForm.controls.email.value
     };
@@ -26,9 +28,11 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          window.open(response['url'], '_blank');
+          window.open(response['url']);
+          this.spinner.show();
         },
         error => {
+          this.spinner.show();
           console.log(error);
         }
       );

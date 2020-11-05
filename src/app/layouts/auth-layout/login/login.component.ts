@@ -3,6 +3,7 @@ import {FormControl, FormGroup, FormBuilder, Form, Validators} from '@angular/fo
 import {LocalStorageService} from '../../../shared/localStorage.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../../shared/services/auth/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
     private local: LocalStorageService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private spinner: NgxSpinnerService,
+
     ) {}
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
   login() {
+    this.spinner.show();
     this.data = {
       email: this.loginForm.controls.email.value
     };
@@ -38,8 +42,10 @@ export class LoginComponent implements OnInit {
         response => {
           this.local.set(this.generateToken());
           this.router.navigateByUrl(response['/show-playlist']);
+          this.spinner.hide();
         },
         error => {
+          this.spinner.hide();
           console.error(error);
         },
       );
