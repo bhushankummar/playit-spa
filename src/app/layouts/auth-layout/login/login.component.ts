@@ -4,6 +4,7 @@ import {LocalStorageService} from '../../../shared/localStorage.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../../shared/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastService } from '../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private spinner: NgxSpinnerService,
+    private toastService: ToastService,
 
     ) {}
 
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.spinner.hide();
+          this.toastService.error('',error.error.error)
           console.error(error);
         },
       );

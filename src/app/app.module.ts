@@ -12,6 +12,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {AppRoutingModule} from './app.routing';
 import {ComponentsModule} from './components/components.module';
 import {AuthGuard} from './shared/auth.guard';
+import { ToastComponent } from './shared/toast/toast.component';
+import { ToastrModule } from 'ngx-toastr';
 // import {PagesModule} from './layouts/admin-layout/pages/pages.module';
 // import { AddPlaylistComponent } from './pages/add-playlist/add-playlist.component';
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -28,14 +30,25 @@ import {AuthGuard} from './shared/auth.guard';
     NgxSpinnerModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: false,
+      progressBar: false
+    })
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ToastComponent,
+  ],
+  exports: [
+    ToastComponent,
   ],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ToastComponent]
+
 })
 export class AppModule {}

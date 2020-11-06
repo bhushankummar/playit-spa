@@ -1,0 +1,41 @@
+<ngb-toast
+  *ngFor="let toast of toastService.toasts"
+  [class]="toast.classname"
+  [autohide]="false"
+  [delay]="toast.delay || 5000"
+  (hide)="toastService.remove(toast)"
+  [header]=""
+>
+  <div class="alert-text" *ngIf="toast.title">
+    <span class="alert-title" data-notify="title">{{ toast.title }}</span
+    ><br />
+    <button
+      type="button"
+      (click)="toastService.remove(toast)"
+      class="close"
+      data-notify="dismiss"
+      aria-label="Close"
+      style="position: absolute; right: 10px; top: 15px; z-index: 1082;"
+    >
+      <span aria-hidden="true" class="close-btn">×</span>
+    </button>
+  </div>
+  <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+    <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
+  </ng-template>
+
+  <ng-template #text>
+    <button
+      *ngIf="!toast.title"
+      (click)="toastService.remove(toast)"
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true" class="close-btn">×</span>
+    </button>
+    <span class="alert-inner--icon"><i class="ni ni-{{ toast.iconName }}"></i></span>
+    {{ toast.textOrTpl}}
+  </ng-template>
+</ngb-toast>
