@@ -3,6 +3,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PlaylistService} from '../../../../shared/services/playlist/playlist.service';
+import { ToastService } from '../../../../shared/toast/toast.service';
 @Component({
   selector: 'app-add-playlist',
   templateUrl: './add-playlist.component.html',
@@ -15,7 +16,8 @@ export class AddPlaylistComponent implements OnInit {
     private formBuilder: FormBuilder,
     private playlist: PlaylistService,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastService: ToastService
     ) {}
 
   ngOnInit(): void {
@@ -37,10 +39,12 @@ export class AddPlaylistComponent implements OnInit {
         response => {
           this.spinner.hide();
           this.router.navigate(['/show-video-playlist']);
+          this.toastService.success('','Playlist Added');
         },
         error => {
           this.spinner.hide();
           console.error(error);
+          this.toastService.error('',error.message);
         }
       );
   }

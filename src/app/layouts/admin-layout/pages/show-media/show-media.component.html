@@ -23,8 +23,16 @@
               <tr *ngFor="let item of mediaData">
                 <td id='title'><a href="{{item.url}}" target='_blank'>{{item.title}}</a></td>
                 <td>{{item.playlistId}}</td>
-                <td><span [ngClass]="item.isDownloaded ? 'badge badge-success': 'badge badge-danger'">{{item.isDownloaded}}</span></td>
-                <td><span [ngClass]="item.isUploaded ? 'badge badge-success': 'badge badge-danger'">{{item.isUploaded}}</span></td>
+                <td><span
+                    [ngClass]="item.isDownloaded ? 'badge badge-success': 'badge badge-danger'">
+                    {{item.isDownloaded ? 'Yes' : 'No'}}
+                  </span>
+                </td>
+                <td><span
+                    [ngClass]="item.isUploaded ? 'badge badge-success': 'badge badge-danger'">
+                    {{item.isUploaded ? 'Yes' : 'No'}}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>

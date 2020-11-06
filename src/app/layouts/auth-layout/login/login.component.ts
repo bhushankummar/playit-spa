@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         response => {
           this.local.set(this.generateToken());
           this.router.navigateByUrl(response['/show-playlist']);
+          this.toastService.success('','Login success')
           this.spinner.hide();
         },
         error => {

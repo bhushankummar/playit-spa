@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../shared/services/auth/auth.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import { ToastService } from '../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   data: any;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder,private spinner: NgxSpinnerService) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder,private spinner: NgxSpinnerService,
+    private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
         },
         error => {
           this.spinner.show();
+          this.toastService.error('',error.error.error)
           console.error(error);
         }
       );

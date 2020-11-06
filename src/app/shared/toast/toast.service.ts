@@ -13,7 +13,7 @@ interface IToast {
 })
 export class ToastService {
   toasts: IToast[] = [];
-  constructor() {}
+  constructor() { }
   success(title: string, textOrTpl: any | TemplateRef<any>, icon?: any) {
     const options = {
       classname: 'toast-bottom-center alert-success',
@@ -50,10 +50,15 @@ export class ToastService {
   remove(toast: any) {
     this.toasts = this.toasts.filter(t => t !== toast);
   }
-  // showWentWrong(data: any) {
-  //   this.toastr.error(data, 'Error', { timeOut: 2000 });
-  // }
-  // unauthorized() {
-  //   this.toastr.error('Please login to Continue To  Panel', 'Unauthorized');
-  // }
+  showApiError(errorObject: any, timer?: number) {
+    const error = {
+      iconName: 'ni-fat-remove',
+      classname: 'toast-bottom-center alert-danger',
+      title: 'Error',
+      textOrTpl:
+        errorObject.error || errorObject.message || errorObject.code,
+      delay: 5000
+    };
+    this.toasts.push(error);
+  }
 }

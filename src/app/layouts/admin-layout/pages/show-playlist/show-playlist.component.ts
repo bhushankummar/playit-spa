@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from '../../../../shared/services/playlist/playlist.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import { ToastService } from '../../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-show-playlist',
@@ -9,7 +10,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class ShowPlaylistComponent implements OnInit {
   playlist;
-  constructor(private playlistService: PlaylistService, private spinner: NgxSpinnerService) {}
+  constructor(private playlistService: PlaylistService, private spinner: NgxSpinnerService,
+     private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.spinner.show();
@@ -17,9 +19,12 @@ export class ShowPlaylistComponent implements OnInit {
       response => {
         this.playlist = response;
         this.spinner.hide();
+        this.toastService.success('','Playlist fatched');
+
       },
       error => {
         this.spinner.hide();
+        this.toastService.error('',error.error.error);
         console.error(error);
       }
     );
