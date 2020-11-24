@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.spinner.hide();
-          this.toastService.error('',error.error.error)
+          this.toastService.error('',error.message)
           console.error(error);
         },
       );
