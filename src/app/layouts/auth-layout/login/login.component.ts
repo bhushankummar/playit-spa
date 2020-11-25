@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   users: any;
   data: any;
+  userAuth: string;
   constructor(
     private router: Router,
     private local: LocalStorageService,
@@ -30,6 +31,11 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
     });
+    this.userAuth = this.route.snapshot.queryParamMap.get('token');
+    if(this.userAuth){
+      this.local.set(this.userAuth);
+      this.router.navigateByUrl('/show-playlist');
+    }
   }
   generateToken() {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -49,7 +55,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.spinner.hide();
-          this.toastService.error('',error.message)
+          this.toastService.showApiError(error)
           console.error(error);
         },
       );

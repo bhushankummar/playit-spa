@@ -54,9 +54,9 @@ export class ToastService {
     const error = {
       iconName: 'ni-fat-remove',
       classname: 'toast-bottom-center alert-danger',
-      title: 'Error',
+      title: '',
       textOrTpl:
-        errorObject.error || errorObject.message || errorObject.code,
+        errorObject.error.error || errorObject.error || errorObject.message || errorObject.code,
       delay: 5000
     };
     this.toasts.push(error);
