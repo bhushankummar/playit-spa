@@ -1,15 +1,15 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, Form, Validators} from '@angular/forms';
-import {LocalStorageService} from '../../../shared/localStorage.service';
-import {Router, ActivatedRoute} from '@angular/router';
-import {AuthService} from '../../../shared/services/auth/auth.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Form, Validators } from '@angular/forms';
+import { LocalStorageService } from '../../../shared/localStorage.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../shared/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastService } from '../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: [ './login.component.scss' ]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastService: ToastService,
 
-    ) {}
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [ '', [ Validators.required, Validators.email ] ],
     });
     this.userAuth = this.route.snapshot.queryParamMap.get('token');
-    if(this.userAuth){
+    if (this.userAuth) {
       this.local.set(this.userAuth);
       this.router.navigateByUrl('/show-playlist');
     }
@@ -49,14 +49,14 @@ export class LoginComponent implements OnInit {
       .subscribe(
         response => {
           // this.local.set(this.generateToken());
-          window.open(response['url']);
+          window.open(response[ 'url' ]);
           // this.router.navigate([response['url']]);
           // this.toastService.success('','Login success')
           this.spinner.hide();
         },
         error => {
           this.spinner.hide();
-          this.toastService.showApiError(error)
+          this.toastService.showApiError(error);
           console.error(error);
         },
       );

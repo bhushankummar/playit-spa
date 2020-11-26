@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {MediaService} from '../../../../shared/services/media/media.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NgxSpinnerService} from 'ngx-spinner';
+import { Component, OnInit } from '@angular/core';
+import { MediaService } from '../../../../shared/services/media/media.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastService } from '../../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-show-media',
   templateUrl: './show-media.component.html',
-  styleUrls: ['./show-media.component.css']
+  styleUrls: [ './show-media.component.css' ]
 })
 
 export class ShowMediaComponent implements OnInit {
   data;
   mediaData;
   constructor(private mediaService: MediaService, private spinner: NgxSpinnerService, private route: ActivatedRoute,
-     private toastService: ToastService) {}
+    private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.spinner.show();
@@ -23,13 +23,13 @@ export class ShowMediaComponent implements OnInit {
     });
     this.mediaService.showMedia(this.data).subscribe(
       response => {
-        this.mediaData = response['data'];
-        this.toastService.success('','Media fatched');
+        this.mediaData = response[ 'data' ];
+        this.toastService.success('', 'Media fatched');
         this.spinner.hide();
       },
       error => {
         this.spinner.hide();
-        this.toastService.error('',error.error.error);
+        this.toastService.error('', error.error.error);
         console.error(error);
       }
     );

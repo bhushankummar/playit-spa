@@ -1,7 +1,7 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
@@ -14,6 +14,7 @@ import {ComponentsModule} from './components/components.module';
 import {AuthGuard} from './shared/auth.guard';
 import { ToastComponent } from './shared/toast/toast.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpHandleInterceptor } from './shared/services/http-handle.interceptor';
 // import {PagesModule} from './layouts/admin-layout/pages/pages.module';
 // import { AddPlaylistComponent } from './pages/add-playlist/add-playlist.component';
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -46,9 +47,13 @@ import { ToastrModule } from 'ngx-toastr';
   exports: [
     ToastComponent,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpHandleInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
-  entryComponents: [ToastComponent]
+  entryComponents: [ToastComponent],
 
 })
 export class AppModule {}

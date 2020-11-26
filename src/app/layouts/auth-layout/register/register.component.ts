@@ -1,23 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from '../../../shared/services/auth/auth.service';
-import {NgxSpinnerService} from 'ngx-spinner';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../../shared/services/auth/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastService } from '../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: [ './register.component.css' ]
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   data: any;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder,private spinner: NgxSpinnerService,
-    private toastService: ToastService) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private spinner: NgxSpinnerService,
+    private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      email: ['', Validators.required]
+      email: [ '', Validators.required ]
     });
   }
 
@@ -29,12 +29,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.data)
       .subscribe(
         response => {
-          window.open(response['url']);
+          window.open(response[ 'url' ]);
           this.spinner.show();
         },
         error => {
           this.spinner.show();
-          this.toastService.error('',error.error.error)
+          this.toastService.error('', error.error.error);
           console.error(error);
         }
       );
