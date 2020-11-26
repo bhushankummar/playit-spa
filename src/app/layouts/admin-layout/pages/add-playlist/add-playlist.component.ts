@@ -44,7 +44,7 @@ export class AddPlaylistComponent implements OnInit {
         error => {
           this.spinner.hide();
           console.error(error);
-          this.toastService.error('', error.message);
+          this.toastService.showApiError(error);
         }
       );
   }
