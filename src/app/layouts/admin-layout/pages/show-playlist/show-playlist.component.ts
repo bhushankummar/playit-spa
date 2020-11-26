@@ -35,6 +35,8 @@ export class ShowPlaylistComponent implements OnInit {
       response => {
         console.log(response);
         // this.playlist = response;
+        this.toastService.success('', 'Playlist Deleted');
+
         this.spinner.hide();
       },
       error => {
