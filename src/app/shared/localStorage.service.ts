@@ -7,9 +7,12 @@ export class LocalStorageService {
 
   constructor() {}
   set(value) {
-    window.localStorage.setItem('token', value);
+    return window.localStorage.setItem('token', value);
+  }
+  get() {
+    return window.localStorage.getItem('token');
   }
   delete(key) {
-    window.localStorage.removeItem(key);
+    return window.localStorage.removeItem(key);
   }
 }
