@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         response => {
           console.log(response);
           // this.local.set(this.generateToken());
-          // window.open(response[ 'url' ]);
+          window.open(response[ 'url' ]);
           // this.router.navigate([response['url']]);
           // this.toastService.success('','Login success')
           this.spinner.hide();
