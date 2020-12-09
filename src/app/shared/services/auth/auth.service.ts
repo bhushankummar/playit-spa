@@ -9,8 +9,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(data) {
-    return this.http.put(environment.apiUrl + '/api/v1/user/login', data);
+  login() {
+    return this.http.get(environment.apiUrl + '/api/v1/user/login');
   }
 
   register(data) {

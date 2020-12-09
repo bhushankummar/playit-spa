@@ -42,14 +42,15 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.spinner.show();
-    this.data = {
-      email: this.loginForm.controls.email.value
-    };
-    this.authService.login(this.data)
+    // this.data = {
+    //   email: this.loginForm.controls.email.value
+    // };
+    this.authService.login()
       .subscribe(
         response => {
+          console.log(response);
           // this.local.set(this.generateToken());
-          window.open(response[ 'url' ]);
+          // window.open(response[ 'url' ]);
           // this.router.navigate([response['url']]);
           // this.toastService.success('','Login success')
           this.spinner.hide();
