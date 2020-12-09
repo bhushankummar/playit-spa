@@ -27,10 +27,10 @@
                
                 <td>{{item.lastSyncTimeStamp|date:'dd/MM/yyyy'}}</td>
                 <td><button type="submit" [routerLink]="['/show-media/',{playlistUrlId: item.urlId}]"
-                    class="btn btn-sm btn-secondary mt-4">Go to media</button>
+                    class="btn btn-sm btn-secondary">Go to media</button>
                 </td>
                 <td><button type="submit" (click)="deletePlaylist(item._id)"
-                    class="btn btn-sm btn-danger mt-4">Delete</button>
+                    class="btn btn-sm btn-danger">Delete</button>
                 </td>
               </tr>
             </tbody>
