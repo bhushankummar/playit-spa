@@ -29,7 +29,7 @@ export class ShowMediaComponent implements OnInit {
       },
       error => {
         this.spinner.hide();
-        this.toastService.error('', error.error.error);
+        this.toastService.showApiError(error);
         console.error(error);
       }
     );
