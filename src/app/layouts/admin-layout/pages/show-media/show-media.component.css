@@ -1,0 +1,8 @@
+#title {
+  width: 10px;
+}
+td#title{
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

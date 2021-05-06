@@ -1,0 +1,142 @@
+.toast {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 15px 20px 15px 20px;
+  width: 290px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+}
+
+:host {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 0.5em;
+  z-index: 1200;
+
+  .toast {
+    padding: 15px;
+  }
+}
+
+.toast-bottom-center {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.alert-default {
+  color: #fff;
+  background-color: #3c4d69;
+  border-color: #3c4d69;
+}
+
+.text-light {
+  color: white;
+}
+
+.toast {
+  -webkit-animation-name: example;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.3s !important;
+}
+
+@-webkit-keyframes example {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.toast {
+  min-width: 250px;
+  max-width: initial;
+  z-index: 9999;
+  left: 1%;
+  bottom: 0px;
+  opacity: 11;
+  padding: 5px;
+}
+
+.close-btn {
+  color: white !important;
+  margin-left: 30px;
+  line-height: 1.5rem !important;
+}
+
+#snackbar.show {
+  visibility: visible;
+  // -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  // animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.toast.toast-header {
+  background-color: rebeccapurple !important;
+}
+
+.alert-title {
+  font-size: 1rem;
+  font-weight: 600;
+  display: block;
+}
+
+.alert-text {
+  display: flex;
+  vertical-align: middle;
+}

@@ -1,0 +1,65 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+  <!-- Mask -->
+  <span class="mask bg-gradient-info opacity-8"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Add&nbsp;playlist</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-body">
+          <form [formGroup]="addPlaylist" (ngSubmit)="addPlaylistDetails()">
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-type">Type</label>
+                    <div class="custom-control custom-radio ml-3">
+                      <input name="type" class="custom-control-input" id="input-video" type="radio"
+                        formControlName="type" value="1" required>
+                      <label class="custom-control-label" for="input-video">Video
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio ml-3">
+                      <input name="type" class="custom-control-input" id="input-audio" type="radio"
+                        formControlName="type" value="0" required>
+                      <label class="custom-control-label" for="input-audio">Audio
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-driveFolder-id">Playlist URL</label>
+                    <input type="text" id="input-playlist-url" class="form-control form-control-alternative"
+                      placeholder="Playlist URL" formControlName="playlistUrl">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-driveFolder-id">Drive folder id</label>
+                    <input type="text" id="input-driveFolder-id" class="form-control form-control-alternative"
+                      placeholder="DriveFolder Id" formControlName="driveFolderId">
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-4" [disabled]="addPlaylist.invalid">Save Details</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Playlist</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Type</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Show Media</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of playlist">
+                <td class="title"><a href="{{item.url}}" target='_blank'>{{item.title}}</a></td>
+                <td><span>{{item.type === '0'?'Audio':'Video'}}</span></td>
+               
+                <td>{{item.lastSyncTimeStamp|date:'dd/MM/yyyy'}}</td>
+                <td><button type="submit" [routerLink]="['/show-media/',{playlistUrlId: item.urlId}]"
+                    class="btn btn-sm btn-secondary">Go to media</button>
+                </td>
+                <td><button type="submit" (click)="deletePlaylist(item._id)"
+                    class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
