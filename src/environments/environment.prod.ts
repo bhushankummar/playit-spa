@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://playit-desk.herokuapp.com'
+  apiUrl: 'https://playit-api.herokuapp.com'
 };
