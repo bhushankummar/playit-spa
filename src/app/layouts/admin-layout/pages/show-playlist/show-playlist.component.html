@@ -29,7 +29,7 @@
                 <td><button type="submit" [routerLink]="['/show-media/',{playlistUrlId: item.urlId}]"
                     class="btn btn-sm btn-secondary">Go to media</button>
                 </td>
-                <td><button type="submit" (click)="deletePlaylist(item._id)"
+                <td><button type="submit" (click)="deletePlaylist(item.id)"
                     class="btn btn-sm btn-danger">Delete</button>
                 </td>
               </tr>
